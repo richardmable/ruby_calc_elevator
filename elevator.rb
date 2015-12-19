@@ -47,10 +47,13 @@ class Elevator
 		else
 			@floor = (@floor + amount)
 			puts "Now on floor #{@floor}."
+			# %x is the command to temporarily stop the program, exit the irb, and use the command line command
+			#"say" to verbally tell the user what floor they are on. Program continues in irb afterwards.
+			%x{say "You are on the #{@floor} floor!"}
 		end
 	end
 
-	#Similar instance method to go up, but to go down.
+	#Similar instance method as to go up, but to go down.
 	def down
 		puts "How many floors down?"
 		amount = gets.chomp.to_i
@@ -63,12 +66,15 @@ class Elevator
 		else
 			@floor = (@floor - amount)
 			puts "Now on floor #{@floor}."
+			#Threw in a question mark to change up the intonation.
+			%x{say "You are on the #{@floor} floor?"}
 		end
 	end
 
 	# Instance method to display what floor you are currently on
 	def current_floor
 		puts "You are currently on floor #{@floor}."
+		%x{say "You are on the #{@floor} floor."}
 	end
 end
 
